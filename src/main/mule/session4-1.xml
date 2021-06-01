@@ -1,0 +1,21 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<mule xmlns:http="http://www.mulesoft.org/schema/mule/http" xmlns="http://www.mulesoft.org/schema/mule/core"
+	xmlns:doc="http://www.mulesoft.org/schema/mule/documentation"
+	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://www.mulesoft.org/schema/mule/core http://www.mulesoft.org/schema/mule/core/current/mule.xsd
+http://www.mulesoft.org/schema/mule/http http://www.mulesoft.org/schema/mule/http/current/mule-http.xsd">
+	<http:listener-config name="HTTP_Listener_config" doc:name="HTTP Listener config" doc:id="d6d01627-2ba6-4a11-ad04-89f1cf576866" >
+		<http:listener-connection host="0.0.0.0" port="8081" />
+	</http:listener-config>
+	<flow name="session4-1Flow" doc:id="2f45ea1b-372c-4db2-bfb5-e479872bc333" >
+		<http:listener doc:name="Listener" doc:id="c2011038-7f78-4144-8c04-39c6d6e7c36b" config-ref="HTTP_Listener_config" path="/test3"/>
+		<flow-ref doc:name="call private flow" doc:id="b6b5ac7e-8c80-48b4-8543-38f8b68a39e5" name="private-flow"/>
+		<set-payload value='#["this is main flow"]' doc:name="main Payload" doc:id="43f8cbbb-b6c0-4bc1-bc51-e3611dce118d" />
+	</flow>
+	<flow name="private-flow" doc:id="87539614-de8c-4485-b869-b04a214dfdca" >
+		<set-payload value='#["this is private flow"]' doc:name="private Payload" doc:id="781951e3-a64a-416a-bd6e-666171e492e6" />
+	</flow>
+	<sub-flow name="session4-1Sub_Flow" doc:id="c2da85b5-dab3-40ca-a106-8e578400cc55" >
+		<set-payload value="#[payload]" doc:name="Set Payload" doc:id="3d295124-2c48-4f9d-9e9c-38481e0649b1" />
+	</sub-flow>
+</mule>
