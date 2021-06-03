@@ -101,7 +101,6 @@
                </execution>
             </executions>
 			</plugin>
-			
 			<!-- Deploy to Cloudhub -->
          <plugin>
             <groupId>org.apache.maven.plugins</groupId>
