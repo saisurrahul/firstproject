@@ -18,19 +18,10 @@
 
 	<build>
 		<plugins>
-		    <plugin>
+			<plugin>
 				<groupId>org.mule.tools.maven</groupId>
 				<artifactId>mule-app-maven-plugin</artifactId>
-				<version>2.3.2</version>
-				<extensions>true</extensions>
-				<configuration>
-                    <copyToAppsDirectory>true</copyToAppsDirectory>
-				</configuration>
-			</plugin>
-			<plugin>
-				<groupId>org.apache.maven.plugins</groupId>
-				<artifactId>maven-clean-plugin</artifactId>
-				<version>3.0.0</version>
+				<version>${mule.tools.version}</version>
 				<extensions>true</extensions>
 				<configuration>
                     <copyToAppsDirectory>true</copyToAppsDirectory>
@@ -86,7 +77,6 @@
 				<groupId>org.mule.tools.maven</groupId>
 				<artifactId>mule-maven-plugin</artifactId>
 				<version>${mule.maven.plugin.version}</version>
-				<extensions>true</extensions>
 				<configuration>
 		        <cloudHubDeployment>
 		            <uri>https://anypoint.mulesoft.com</uri>
@@ -101,14 +91,7 @@
                             <objectStore>${true}</objectStore>
 		        </cloudHubDeployment>
 				</configuration>
-			</plugin>
-			
-			<!-- Deploy to Cloudhub -->
-         <plugin>
-            <groupId>org.mule.tools.maven</groupId>
-            <artifactId>mule-maven-plugin</artifactId>
-            <version>2.3.2</version>
-           	<executions>
+				<executions>
                <execution>
                   <id>deploy</id>
                   <phase>deploy</phase>
@@ -117,7 +100,9 @@
                   </goals>
                </execution>
             </executions>
-         </plugin>
+			</plugin>
+			
+			<!-- Deploy to Cloudhub -->
          <plugin>
             <groupId>org.apache.maven.plugins</groupId>
             <artifactId>maven-deploy-plugin</artifactId>
